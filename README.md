@@ -1,1 +1,1 @@
-Working solutions for Advent of Code 2022. Files ending in suffix '_B' are ones where I am essentially debugging my first attempts from the non-suffixed version, and which are the working version. Decided to include both to track my thinking process.
+Working solutions for Advent of Code 2022. Files ending in suffix '_B' are ones where I am essentially debugging my first attempts from the non-suffixed version, and which are the working version. Decided to include both to track my process.
