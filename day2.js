@@ -4,27 +4,17 @@ const input = fs
   .readFileSync("day2input.txt", { encoding: "utf8" })
   .split("\n");
 
-// console.log(input)
-
 const playDict = {
   X: { shapeval: 1, winsAgainst: 'C', losesAgainst: 'B', drawsAgainst: 'A' },
   Y: { shapeval: 2, winsAgainst: 'A', losesAgainst: 'C', drawsAgainst: 'B' },
   Z: { shapeval: 3, winsAgainst: 'B', losesAgainst: 'A', drawsAgainst: 'C' },
 };
-
-// loseDict = {
-//   X: B,
-//   Y: C,
-//   Z: A
-// }
-
 const answer1 = () => {
   let runningScore = 0
 
 for (const play of input) {
-  //'C_X'
-  const opponent = play[0]; //C
-  const myPlay = play[2]; //X
+  const opponent = play[0];
+  const myPlay = play[2];
   //now determine the score
   const currKey = playDict[myPlay]
 
@@ -42,7 +32,7 @@ for (const play of input) {
 // console.log({runningScore})
 }
 
-// answer1()
+answer1()
 
 
 const opponentMap = {
@@ -66,9 +56,8 @@ outcomeDict = {
 const answer2 = () => {
   let runningScore = 0
   for (const play of input) {
-    //'C_X'
-  const opponent = play[0]; //C
-  const outcome = play[2]; //X
+  const opponent = play[0];
+  const outcome = play[2];
   const subObj = opponentMap[opponent]
   const myPlay = subObj[outcome]
   //determine score, get shapeVal, and get outcomeVal
