@@ -5,7 +5,6 @@ const input = fs
   .split("\n");
 const n = input.length;
 const m = input[0].length;
-console.log({ n, m });
 const matrix = Array(n);
 for (let i = 0; i < n; i++) {
   const currStr = input[i];
@@ -129,7 +128,6 @@ const getVisCount = (grid, i, j) => {
 
 const answer2 = () => {
   let runningMaxVis = 0;
-  console.log({ runningMaxVis }, "n", n);
   for (let i = 1; i < n - 1; i++) {
     for (let j = 1; j < m - 1; j++) {
       const currVisCount = getVisCount(matrix, i, j);

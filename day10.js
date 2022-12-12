@@ -22,11 +22,10 @@ const answer1 = () => {
   let cycle = 1;
   let register = 1;
   for (const line of input) {
-    // console.log({cycle, register})
     const [cmd, amt] = getProcessedLined(line);
     if (cmd === "noop") {
       cycle++;
-      //check if its 20, 40, 60 cyclet etc. if so calc the signal strength
+      //check if its 20, 40, 60 cycle etc. if so calc the signal strength
       checkCycle(cycle, register);
     }
     if (cmd === "addx") {
@@ -35,12 +34,12 @@ const answer1 = () => {
         if (i === 2) {
           register += amt;
         }
-        //check if its 20, 40,60 etc, calc strngth
+        //check if its 20, 40,60 etc, calc strength
         checkCycle(cycle, register);
       }
     }
   }
-  // console.log(runningSum);
+  console.log(runningSum);
 };
 // answer1();
 
@@ -49,7 +48,6 @@ for (let i = 0; i < CRT.length; i++) {
   const newRow = Array(40).fill(".");
   CRT[i] = newRow;
 }
-// console.log(CRT);
 
 const checkPixel = (cycle, register) => {
   let singleRowPix = (cycle % 40) - 1;
@@ -57,11 +55,9 @@ const checkPixel = (cycle, register) => {
     singleRowPix = 39
   }
   let currRow = Math.floor(cycle/40)
-  // console.log('currRow before', currRow)
   if(cycle >= 40 && cycle % 40 === 0){
     currRow--
   }
-  // console.log({cycle, currRow, singleRowPix, register });
   if(register -1 === singleRowPix || register === singleRowPix || register+1 === singleRowPix){
     CRT[currRow][singleRowPix] = '#'
   }
@@ -72,7 +68,6 @@ const answer2 = () => {
   let register = 1;
   checkPixel(cycle, register);
   for (const line of input) {
-    // console.log({ cycle, register });
     const [cmd, amt] = getProcessedLined(line);
     if (cmd === "noop") {
       cycle++;

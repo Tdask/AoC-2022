@@ -83,18 +83,14 @@ const answer = () => {
       //maybe update tail
       currTail = maybeUpdateTail(currTail, currHead, dir);
       tailVisited.add(currTail.join());
-      // console.log('newTail', currTail, 'vs head', currHead)
     }
   }
   // console.log('answer1', tailVisited.size);
-  // console.log(tailVisited)
 };
 
 answer();
 
 const answer2 = () => {
-  //currHead [0,1]
-  //[[0,2], [0,1], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]]
   const knots = [[0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]]
   const lastKnotVisited = new Set()
   lastKnotVisited.add(knots[9].join());
@@ -103,38 +99,25 @@ const answer2 = () => {
   for (const line of input) {
     const dir = line[0];
     const moveCount = parseInt(line.split(' ')[1]);
-    console.log('yo', typeof moveCount)
     for (let i = 1; i <= moveCount; i++) {
-      // console.log(knots)
       //update H
       currHead = moves[dir](knots[0]); //[0,1]
       knots[0] = currHead
       for(let i = 0; i < knots.length-1; i++){ //i =8
-        // console.log("knots idx", i)
         currHead = knots[i] //[0,0]
         currTail = knots[i+1] // [0,0]
-        // currTail = knots[i]
         //update currTail?
         currTail = maybeUpdateTail(currTail, currHead, dir); //[0,0]
         knots[i+1] = currTail
         currHead = currTail
-        // if(i === 8){
-        //   lastKnotVisited.add(currTail.join())
-        // }
         lastKnotVisited.add(knots[9].join())
       }
     }
-    // console.log('knots', knots)
   }
   console.log('answer2', lastKnotVisited.size)
-  // console.log('answer2', lastKnotVisited)
 }
 answer2()
-/*
-R 1
-U 2
-L 1
-*/
+
 
 /*
   [H       T]

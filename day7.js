@@ -5,7 +5,6 @@ const input = fs
   .split("\n");
 
 const calculateSumOfLevel = (obj, path) => {
-  console.log('calculate',path, obj[path])
   const currLevel = obj[path];
   let runSum = 0;
   for (const item of currLevel) {
@@ -29,7 +28,6 @@ const getCurrLevel = (idx, list, currPath) => {
     } else {
       //otherwise it's a dir and need to append to currPath and add to level
       const newPath = currPath + list[j].split(" ")[1] + "/";
-      console.log('NEW PATH', newPath)
       level.push(newPath);
     }
     j++;
@@ -50,9 +48,6 @@ const answer1 = () => {
     if (currLine[0] === "$" && currLine.indexOf("ls") !== -1) {
       //get current level's nodes, add them to sumMap
       const currLevel = getCurrLevel(i, input, currPath);
-      // if(currPath === '/sqhw/mjfdjrgt/pdsdjdlz/'){
-      //   console.log('Fucker')
-      // }
       //fill up sumMap with currLevel, increment i by length of currLevel
       sumMap[currPath] = [];
       for (node of currLevel) {
@@ -69,19 +64,16 @@ const answer1 = () => {
         stack.push(currPath);
         currPath = currPath + currLine.split(" ")[2] + "/";
       } else {
-        console.log('hit else', stack)
         if(!stack.length){
           break
         }
         //pop off path from stack, update currPath
         currPath = stack.pop();
-        console.log('now currPath', currPath)
       }
       i++;
       continue;
     }
   }
-  // console.log('sumMap', sumMap)
 
   //iterate thru sumMap calculating sum of each level using recursive helper. keep running set of all level sums <= 100k, then add them all up and return
   let runningSum = 0

@@ -2,8 +2,6 @@ const fs = require("fs");
 
 const input = fs.readFileSync("day6input.txt", { encoding: "utf8" });
 
-// console.log(input);
-
 const initializeCount = (str) => {
   const obj = {};
   for (let i = 0; i < 4; i++) {

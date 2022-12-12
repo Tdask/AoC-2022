@@ -6,7 +6,6 @@ const input = fs
 
 const n = input.length;
 const m = input[0].length; //the number of stacks
-const stackHeight = n - 1; // the height of the stacks
 const stackAmount = Math.ceil(m / 4);
 
 const moves = fs

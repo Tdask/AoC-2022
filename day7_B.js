@@ -3,7 +3,6 @@ const fs = require("fs");
 const input = fs
   .readFileSync("day7input.txt", { encoding: "utf8" })
   .split("\n");
-// console.log(input);
 
 const addPathToMap = (path, map) => {
   if (map[path] === undefined) {
@@ -23,7 +22,6 @@ const answer1 = () => {
         } else {
           currPath += "/" + line.split(" ")[2];
         }
-        // console.log('after concat', currPath)
         stack.push(currPath);
         addPathToMap(currPath, sizeMap);
       } else if (line.trim() === "$ cd /") {
@@ -37,13 +35,11 @@ const answer1 = () => {
       }
     }
     if (!Number.isNaN(parseInt(line.split(" ")[0]))) {
-      // console.log("number line", line, stack, sizeMap);
       for (const path of stack) {
         sizeMap[path] += parseInt(line.split(" ")[0]);
       }
     }
   }
-  console.log("after loop", sizeMap);
   let runningSum = 0;
   for (const key of Object.keys(sizeMap)) {
     if (sizeMap[key] <= 100000) {
@@ -52,7 +48,7 @@ const answer1 = () => {
   }
   const totalUsed = sizeMap["/"];
   const unused = 70000000 - totalUsed;
-  //ideally want unused to be at least 30mil,
+  //want unused to be at least 30mil,
   //what is the smallest size directory we can delete that gets us to 30mil unused
   const minToDelete = 30000000 - unused
   let minDeleteAmount = Infinity;
